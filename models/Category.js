@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema(
   {
@@ -7,8 +7,8 @@ const Schema = mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["active", "inactive"],
-      default: "active",
+      enum: ['active', 'inactive'],
+      default: 'active',
     },
     createdAt: {
       type: Number,
@@ -18,6 +18,8 @@ const Schema = mongoose.Schema(
     },
   },
   {
-    timestamp: { currentTime: () => Math.floor(Date.now() / 1000) },
+    timestamps: { currentTime: () => Math.floor(Date.now() / 1000) },
   }
 );
+
+export default mongoose.model('Category', Schema);
