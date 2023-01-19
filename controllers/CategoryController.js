@@ -1,6 +1,30 @@
 import category from '../models/Category.js';
+
+const index = async (req, res) => {
+  try {
+    const categories = await category.find();
+    if (!categories) {
+      throw { code: 500, message: 'Get Category Failed' };
+    }
+    return res.status(200).json({
+      status: true,
+      total: categories.length,
+      categories,
+    });
+  } catch (err) {
+    return res.status(err.code).json({
+      status: false,
+      message: err.message,
+    });
+  }
+};
+
 const store = async (req, res) => {
   try {
+    if (!req.body.title) {
+      throw { code: 428, message: 'Title is required' };
+    }
+
     const title = req.body.title;
 
     const newCategory = new category({
@@ -17,7 +41,7 @@ const store = async (req, res) => {
       status: true,
       Category,
     });
-  } catch (error) {
+  } catch (err) {
     return res.status(err.code).json({
       status: false,
       message: err.message,
@@ -25,4 +49,4 @@ const store = async (req, res) => {
   }
 };
 
-export { store };
+export { index, store };
