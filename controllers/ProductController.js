@@ -1,22 +1,24 @@
 import product from '../models/Product.js';
+import category from '../models/Category.js';
+import mongoose from 'mongoose';
 
 const index = async (req, res) => {
-  //   try {
-  //     const categories = await product.find();
-  //     if (!categories) {
-  //       throw { code: 500, message: 'Get Product Failed' };
-  //     }
-  //     return res.status(200).json({
-  //       status: true,
-  //       total: categories.length,
-  //       categories,
-  //     });
-  //   } catch (err) {
-  //     return res.status(err.code).json({
-  //       status: false,
-  //       message: err.message,
-  //     });
-  //   }
+  try {
+    const products = await product.find({ status: 'active' });
+    if (!products) {
+      throw { code: 500, message: 'Get Product Failed' };
+    }
+    return res.status(200).json({
+      status: true,
+      total: products.length,
+      products,
+    });
+  } catch (err) {
+    return res.status(err.code).json({
+      status: false,
+      message: err.message,
+    });
+  }
 };
 
 const store = async (req, res) => {
@@ -37,6 +39,16 @@ const store = async (req, res) => {
     const productExist = await product.findOne({ title: req.body.title });
     if (productExist) {
       throw { code: 428, message: 'Product is exist' };
+    }
+
+    const isObjectId = mongoose.Types.ObjectId.isValid(req.body.categoryId);
+    if (!isObjectId) {
+      throw { code: 500, message: 'CategoryId is not valid' };
+    }
+
+    const categoryExist = await category.findOne({ _id: req.body.categoryId });
+    if (!categoryExist) {
+      throw { code: 428, message: 'CategoryId is not exist' };
     }
 
     const title = req.body.title;
@@ -62,6 +74,9 @@ const store = async (req, res) => {
       Product,
     });
   } catch (err) {
+    if (!err.code) {
+      err.code = 500;
+    }
     return res.status(err.code).json({
       status: false,
       message: err.message,
