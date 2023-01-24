@@ -1,0 +1,211 @@
+[{
+  "_id": {
+    "$oid": "63cf3af2a8599fb730e86acf"
+  },
+  "title": "Asus Zenfone",
+  "thumbnail": "asus-zenfone.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "status": "active",
+  "createdAt": 1674525426,
+  "updatedAt": 1674525426,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3afca8599fb730e86ad3"
+  },
+  "title": "Iphone 6 Silver",
+  "thumbnail": "iphone-6-silver.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "status": "active",
+  "createdAt": 1674525436,
+  "updatedAt": 1674525436,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b04a8599fb730e86ad7"
+  },
+  "title": "Lenovo A7000",
+  "thumbnail": "Lenovo-A7000.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "status": "active",
+  "createdAt": 1674525444,
+  "updatedAt": 1674525444,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b0da8599fb730e86adb"
+  },
+  "title": "MI 4I",
+  "thumbnail": "mi-4i.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "status": "active",
+  "createdAt": 1674525453,
+  "updatedAt": 1674525453,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b18a8599fb730e86adf"
+  },
+  "title": "Samsung Galaxy A3",
+  "thumbnail": "samsung-galaxy-A3.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "status": "active",
+  "createdAt": 1674525464,
+  "updatedAt": 1674525464,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b1fa8599fb730e86ae3"
+  },
+  "title": "Samsung Galaxy A8",
+  "thumbnail": "samsung-galaxy-A8.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "status": "active",
+  "createdAt": 1674525471,
+  "updatedAt": 1674525471,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b31a8599fb730e86ae7"
+  },
+  "title": "Samsung Galaxy Grand Prime",
+  "thumbnail": "samsung-galaxy-grand-prime.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "status": "active",
+  "createdAt": 1674525489,
+  "updatedAt": 1674525489,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b3da8599fb730e86aeb"
+  },
+  "title": "Samsung Galaxy Note 3",
+  "thumbnail": "samsung-galaxy-note-3.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "status": "active",
+  "createdAt": 1674525501,
+  "updatedAt": 1674525501,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b45a8599fb730e86aef"
+  },
+  "title": "Canon EOS 700d",
+  "thumbnail": "canon-eos-700d.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd50309a8db3b5da5252"
+  },
+  "status": "active",
+  "createdAt": 1674525509,
+  "updatedAt": 1674525509,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b4da8599fb730e86af3"
+  },
+  "title": "Canon EOS 750d",
+  "thumbnail": "canon-eos-750d.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd50309a8db3b5da5252"
+  },
+  "status": "active",
+  "createdAt": 1674525517,
+  "updatedAt": 1674525517,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b55a8599fb730e86af7"
+  },
+  "title": "Nikon d3200",
+  "thumbnail": "nikon-d3200.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd50309a8db3b5da5252"
+  },
+  "status": "active",
+  "createdAt": 1674525525,
+  "updatedAt": 1674525525,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b5ca8599fb730e86afb"
+  },
+  "title": "Nikon d5200",
+  "thumbnail": "nikon-d5200.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd50309a8db3b5da5252"
+  },
+  "status": "active",
+  "createdAt": 1674525532,
+  "updatedAt": 1674525532,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3b63a8599fb730e86aff"
+  },
+  "title": "LG LED TV 32",
+  "thumbnail": "lg-32-led-tv-32LF550A.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd5b309a8db3b5da5254"
+  },
+  "status": "active",
+  "createdAt": 1674525539,
+  "updatedAt": 1674525539,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3bafa8599fb730e86b04"
+  },
+  "title": "LG LED TV 32LF520A",
+  "thumbnail": "lg-led-tv32-32LF520A.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd5b309a8db3b5da5254"
+  },
+  "status": "active",
+  "createdAt": 1674525615,
+  "updatedAt": 1674525615,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63cf3bbaa8599fb730e86b08"
+  },
+  "title": "Sharp LED TV 32",
+  "thumbnail": "sharp-32-led-32LE265i.png",
+  "price": 2000000,
+  "categoryId": {
+    "$oid": "63c9fd5b309a8db3b5da5254"
+  },
+  "status": "active",
+  "createdAt": 1674525626,
+  "updatedAt": 1674525626,
+  "__v": 0
+}]

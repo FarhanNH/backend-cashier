@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "63c9fd46309a8db3b5da5250"
+  },
+  "title": "Smartphone",
+  "status": "active",
+  "createdAt": 1674181958,
+  "updatedAt": 1674181958,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63c9fd50309a8db3b5da5252"
+  },
+  "title": "Camera",
+  "status": "active",
+  "createdAt": 1674181968,
+  "updatedAt": 1674181968,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63c9fd5b309a8db3b5da5254"
+  },
+  "title": "Televisi",
+  "status": "active",
+  "createdAt": 1674181979,
+  "updatedAt": 1674181979,
+  "__v": 0
+}]
