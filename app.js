@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import logger from 'morgan';
 import indexRouter from './routes/index.js';
 
@@ -10,6 +11,11 @@ var app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(
+  cors({
+    origin: 'http://localhost:8000',
+  })
+);
 
 app.use('/', indexRouter);
 
