@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "fb4d58be-b3a7-4813-883d-092942dad7ed",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9377854"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fullname",
+							"value": "Farhan",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "farhan.nhuda@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/auth/register",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

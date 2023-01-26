@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "39ed74b2-00ee-4974-863f-5892bcf97845",
+		"name": "Categories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9377854"
+	},
+	"item": [
+		{
+			"name": "Store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Televisi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/categories",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/categories",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
