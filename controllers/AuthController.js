@@ -1,5 +1,16 @@
 import user from '../models/User.js';
 import bcrypt from 'bcrypt';
+import jsonwebtoken from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+const env = dotenv.config().parsed;
+
+const generateAccessToken = async (payload) => {
+  return jsonwebtoken.sign(payload, env.JWT_ACCESS_TOKEN_SECRET, { expiresIn: env.JWT_ACCESS_TOKEN_LIFE });
+};
+const generateRefreshToken = async (payload) => {
+  return jsonwebtoken.sign(payload, env.JWT_REFRESH_TOKEN_SECRET, { expiresIn: env.JWT_REFRESH_TOKEN_LIFE });
+};
 
 const register = async (req, res) => {
   try {
@@ -73,10 +84,15 @@ const login = async (req, res) => {
       throw { code: 428, message: 'PASSWORD_INVALID' };
     }
 
+    const payload = { id: User._id, role: User.role };
+    const accessToken = await generateAccessToken(payload);
+    const refreshToken = await generateRefreshToken(payload);
+
     return res.status(200).json({
       status: true,
       message: 'LOGIN_SUCCESS',
-      User,
+      accessToken,
+      refreshToken,
     });
   } catch (err) {
     if (!err) {
