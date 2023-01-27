@@ -1,4 +1,5 @@
 import user from '../models/User.js';
+import bcrypt from 'bcrypt';
 
 const register = async (req, res) => {
   try {
@@ -21,10 +22,13 @@ const register = async (req, res) => {
       throw { code: 409, message: 'EMAIL_EXIST' };
     }
 
+    let salt = await bcrypt.genSalt(10);
+    let hash = await bcrypt.hash(req.body.password, salt);
+
     const newUser = new user({
       fullname: req.body.fullname,
       email: req.body.email,
-      password: req.body.password,
+      password: hash,
       role: req.body.role,
     });
 
