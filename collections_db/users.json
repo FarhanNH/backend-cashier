@@ -1,13 +1,13 @@
 [{
   "_id": {
-    "$oid": "63d1e289f7be7e8170057a94"
+    "$oid": "63d32ef1e958c3a45a34867f"
   },
   "fullname": "Farhan",
-  "email": "farhan.nhuda@gmail.com",
-  "password": "password",
+  "email": "farhan.nhuda1@gmail.com",
+  "password": "$2b$10$XpyxtI35WzfGTF/jdmh0yeZmymv1YyMyJ2iUryBFVxggPuFWMWj7y",
   "role": "employee",
   "status": "active",
-  "createdAt": 1674699401,
-  "updatedAt": 1674699401,
+  "createdAt": 1674784497,
+  "updatedAt": 1674784497,
   "__v": 0
 }]

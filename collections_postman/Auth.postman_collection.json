@@ -21,11 +21,16 @@
 						},
 						{
 							"key": "email",
-							"value": "farhan.nhuda@gmail.com",
+							"value": "farhan.nhuda1@gmail.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "retype_password",
 							"value": "password",
 							"type": "text"
 						}
@@ -39,6 +44,39 @@
 					"path": [
 						"auth",
 						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "farhan.nhuda1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/auth/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"auth",
+						"login"
 					]
 				}
 			},
