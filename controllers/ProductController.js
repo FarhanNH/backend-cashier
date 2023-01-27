@@ -6,7 +6,7 @@ const index = async (req, res) => {
   try {
     const products = await product.find({ status: 'active' });
     if (!products) {
-      throw { code: 500, message: 'Get Product Failed' };
+      throw { code: 500, message: 'GET_PRODUCT_FAILED' };
     }
     return res.status(200).json({
       status: true,
@@ -24,31 +24,31 @@ const index = async (req, res) => {
 const store = async (req, res) => {
   try {
     if (!req.body.title) {
-      throw { code: 428, message: 'Title is required' };
+      throw { code: 428, message: 'TITLE_REQUIRED' };
     }
     if (!req.body.thumbnail) {
-      throw { code: 428, message: 'Thumbnail is required' };
+      throw { code: 428, message: 'THUMBNAIL_REQUIRED' };
     }
     if (!req.body.price) {
-      throw { code: 428, message: 'Price is required' };
+      throw { code: 428, message: 'PRICE_REQUIRED' };
     }
     if (!req.body.categoryId) {
-      throw { code: 428, message: 'CategoryId is required' };
+      throw { code: 428, message: 'CATEGORYID_REQUIRED' };
     }
 
     const productExist = await product.findOne({ title: req.body.title });
     if (productExist) {
-      throw { code: 428, message: 'Product is exist' };
+      throw { code: 428, message: 'PRODUCT_EXIST' };
     }
 
     const isObjectId = mongoose.Types.ObjectId.isValid(req.body.categoryId);
     if (!isObjectId) {
-      throw { code: 500, message: 'CategoryId is not valid' };
+      throw { code: 500, message: 'CATEGORYID_INVALID' };
     }
 
     const categoryExist = await category.findOne({ _id: req.body.categoryId });
     if (!categoryExist) {
-      throw { code: 428, message: 'CategoryId is not exist' };
+      throw { code: 428, message: 'CATEGORYID_NOT_EXIST' };
     }
 
     const title = req.body.title;
@@ -66,7 +66,7 @@ const store = async (req, res) => {
     const Product = await newProduct.save();
 
     if (!Product) {
-      throw { code: 500, message: 'Strore product failed' };
+      throw { code: 500, message: 'STORE_PRODUCT_FAILED' };
     }
 
     return res.status(200).json({

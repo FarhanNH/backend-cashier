@@ -3,13 +3,22 @@ import user from '../models/User.js';
 const register = async (req, res) => {
   try {
     if (!req.body.fullname) {
-      throw { code: 428, message: 'Fullname is required' };
+      throw { code: 428, message: 'FULLNAME_REQUIRED' };
     }
     if (!req.body.email) {
-      throw { code: 428, message: 'Email is required' };
+      throw { code: 428, message: 'EMAIL_REQUIRED' };
     }
     if (!req.body.password) {
-      throw { code: 428, message: 'Password is required' };
+      throw { code: 428, message: 'PASSWORD_REQUIRED' };
+    }
+
+    if (req.body.password !== req.body.retype_password) {
+      throw { code: 428, message: 'PASSWORD_MUST_MATCH' };
+    }
+
+    const emailExist = await user.findOne({ email: req.body.email });
+    if (emailExist) {
+      throw { code: 409, message: 'EMAIL_EXIST' };
     }
 
     const newUser = new user({

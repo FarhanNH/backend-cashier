@@ -4,7 +4,7 @@ const index = async (req, res) => {
   try {
     const categories = await category.find({ status: 'active' });
     if (!categories) {
-      throw { code: 500, message: 'Get Category Failed' };
+      throw { code: 500, message: 'GET_CATEGORY_FAILED' };
     }
     return res.status(200).json({
       status: true,
@@ -22,7 +22,7 @@ const index = async (req, res) => {
 const store = async (req, res) => {
   try {
     if (!req.body.title) {
-      throw { code: 428, message: 'Title is required' };
+      throw { code: 428, message: 'TITLE_REQUIRED' };
     }
 
     const title = req.body.title;
@@ -34,7 +34,7 @@ const store = async (req, res) => {
     const Category = await newCategory.save();
 
     if (!Category) {
-      throw { code: 500, message: 'Strore category failed' };
+      throw { code: 500, message: 'STORE_CATEGORY_FAILED' };
     }
 
     return res.status(200).json({
