@@ -110,7 +110,7 @@ const login = async (req, res) => {
 
     const isMatch = await bcrypt.compareSync(req.body.password, User.password);
     if (!isMatch) {
-      throw { code: 428, message: 'PASSWORD_INVALID' };
+      throw { code: 403, message: 'PASSWORD_INVALID' };
     }
 
     const payload = { id: User._id, role: User.role };
