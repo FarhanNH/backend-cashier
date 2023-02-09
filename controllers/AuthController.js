@@ -54,7 +54,7 @@ const register = async (req, res) => {
     }
 
     if (req.body.password !== req.body.retype_password) {
-      throw { code: 428, message: 'PASSWORD_MUST_MATCH' };
+      throw { code: 428, message: 'PASSWORD_NOT_MATCH' };
     }
 
     const emailExist = await isEmailExist(req.body.email);
@@ -69,7 +69,6 @@ const register = async (req, res) => {
       fullname: req.body.fullname,
       email: req.body.email,
       password: hash,
-      role: req.body.role,
     });
 
     const User = await newUser.save();
