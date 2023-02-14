@@ -2,13 +2,16 @@ import user from '../models/User.js';
 
 const index = async (req, res) => {
   try {
-    const users = await user.paginate(
-      {},
-      {
-        page: req.query.page || 1, //pakai query karena mengirim parameternya via url
-        limit: req.query.limit || 10,
-      }
-    );
+    let find = {
+      fullname: { $regex: `^${req.query.search}`, $option: 'i' },
+    };
+
+    let options = {
+      page: req.query.page || 1, //pakai query karena mengirim parameternya via url
+      limit: req.query.limit || 10,
+    };
+
+    const users = await user.paginate(find, options);
 
     if (!users) {
       throw { code: 500, message: 'GET_USER_FAILED' };
