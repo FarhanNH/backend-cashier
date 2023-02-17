@@ -101,7 +101,7 @@ const store = async (req, res) => {
     return res.status(200).json({
       status: true,
       message: 'USER_REGISTER_SUCCESS',
-      User,
+      user: User,
     });
   } catch (err) {
     err.code = err.code || 500;
@@ -114,6 +114,9 @@ const store = async (req, res) => {
 
 const update = async (req, res) => {
   try {
+    if (!req.params.id) {
+      throw { code: 428, message: 'ID_REQUIRED' };
+    }
     if (!req.body.fullname) {
       throw { code: 428, message: 'FULLNAME_REQUIRED' };
     }
@@ -154,7 +157,7 @@ const update = async (req, res) => {
     return res.status(200).json({
       status: true,
       message: 'USER_UPDATE_SUCCESS',
-      User,
+      user: User,
     });
   } catch (err) {
     err.code = err.code || 500;
@@ -165,4 +168,30 @@ const update = async (req, res) => {
   }
 };
 
-export { index, store, update, show };
+const destroy = async (req, res) => {
+  try {
+    if (!req.params.id) {
+      throw { code: 428, message: 'ID_REQUIRED' };
+    }
+
+    const User = await user.findByIdAndDelete(req.params.id);
+
+    if (!User) {
+      throw { code: 500, message: 'USER_DELETE_FAILED' };
+    }
+
+    return res.status(200).json({
+      status: true,
+      message: 'USER_DELETE_SUCCESS',
+      user: User,
+    });
+  } catch (err) {
+    err.code = err.code || 500;
+    return res.status(err.code).json({
+      status: false,
+      message: err.message,
+    });
+  }
+};
+
+export { index, store, update, show, destroy };
