@@ -130,15 +130,12 @@ const login = async (req, res) => {
 const refreshToken = async (req, res) => {
   try {
     if (!req.body.refreshToken) {
-      throw { code: 428, message: 'REFRESH_TOKEN_REQUIRED' };
+      throw { code: 401, message: 'REFRESH_TOKEN_REQUIRED' };
     }
 
     const verify = await jsonwebtoken.verify(req.body.refreshToken, env.JWT_REFRESH_TOKEN_SECRET);
-    if (!verify) {
-      throw { code: 401, message: 'REFRESH_TOKEN_INVALID' };
-    }
 
-    const payload = { _id: verify._id, role: verify.role };
+    const payload = { id: verify.id, role: verify.role };
     const accessToken = await generateAccessToken(payload);
     const refreshToken = await generateRefreshToken(payload);
 
@@ -150,6 +147,14 @@ const refreshToken = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    if (err.message == 'jwt expired') {
+      err.message = 'REFRESH_TOKEN_EXPIRED';
+      err.code = 401;
+    } else {
+      err.message = 'REFRESH_TOKEN_INVALID';
+      err.code = 401;
+    }
+
     err.code = err.code || 500;
 
     return res.status(err.code).json({
