@@ -1,8 +1,8 @@
-import category from '../models/Category.js';
+import Category from '../models/Category.js';
 
 const index = async (req, res) => {
   try {
-    const categories = await category.find({ status: 'active' });
+    const categories = await Category.find({ status: 'active' });
     if (!categories) {
       throw { code: 500, message: 'GET_CATEGORY_FAILED' };
     }
@@ -12,7 +12,7 @@ const index = async (req, res) => {
       categories,
     });
   } catch (err) {
-    return res.status(err.code).json({
+    return res.status(err.code || 500).json({
       status: false,
       message: err.message,
     });
@@ -25,24 +25,22 @@ const store = async (req, res) => {
       throw { code: 428, message: 'TITLE_REQUIRED' };
     }
 
-    const title = req.body.title;
-
-    const newCategory = new category({
-      title: title,
+    const newCategory = new Category({
+      title: req.body.title,
     });
 
-    const Category = await newCategory.save();
+    const category = await newCategory.save();
 
-    if (!Category) {
+    if (!category) {
       throw { code: 500, message: 'STORE_CATEGORY_FAILED' };
     }
 
     return res.status(200).json({
       status: true,
-      Category,
+      category,
     });
   } catch (err) {
-    return res.status(err.code).json({
+    return res.status(err.code || 500).json({
       status: false,
       message: err.message,
     });

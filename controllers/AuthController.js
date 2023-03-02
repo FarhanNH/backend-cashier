@@ -1,4 +1,4 @@
-import user from '../models/User.js';
+import User from '../models/User.js';
 import { isEmailExist } from '../libraries/isEmailExist.js';
 import bcrypt from 'bcrypt';
 import jsonwebtoken from 'jsonwebtoken';
@@ -24,10 +24,7 @@ const checkEmail = async (req, res) => {
       message: 'EMAIL_NOT_EXIST',
     });
   } catch (err) {
-    if (!err) {
-      err.code = 500;
-    }
-    return res.status(err.code).json({
+    return res.status(err.code || 500).json({
       status: false,
       message: err.message,
     });
@@ -58,28 +55,25 @@ const register = async (req, res) => {
     let salt = await bcrypt.genSalt(10);
     let hash = await bcrypt.hash(req.body.password, salt);
 
-    const newUser = new user({
+    const newUser = new User({
       fullname: req.body.fullname,
       email: req.body.email,
       password: hash,
     });
 
-    const User = await newUser.save();
+    const user = await newUser.save();
 
-    if (!User) {
+    if (!user) {
       throw { code: 500, message: 'USER_REGISTER_FAILED' };
     }
 
     return res.status(200).json({
       status: true,
       message: 'USER_REGISTER_SUCCESS',
-      User,
+      user,
     });
   } catch (err) {
-    if (!err) {
-      err.code = 500;
-    }
-    return res.status(err.code).json({
+    return res.status(err.code || 500).json({
       status: false,
       message: err.message,
     });
@@ -95,32 +89,29 @@ const login = async (req, res) => {
       throw { code: 428, message: 'PASSWORD_REQUIRED' };
     }
 
-    const User = await user.findOne({ email: req.body.email });
-    if (!User) {
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
       throw { code: 404, message: 'USER_NOT_FOUND' };
     }
 
-    const isMatch = await bcrypt.compareSync(req.body.password, User.password);
+    const isMatch = await bcrypt.compareSync(req.body.password, user.password);
     if (!isMatch) {
       throw { code: 403, message: 'PASSWORD_INVALID' };
     }
 
-    const payload = { id: User._id, role: User.role };
+    const payload = { id: user._id, role: user.role };
     const accessToken = await generateAccessToken(payload);
     const refreshToken = await generateRefreshToken(payload);
 
     return res.status(200).json({
       status: true,
       message: 'LOGIN_SUCCESS',
-      fullname: User.fullname,
+      fullname: user.fullname,
       accessToken,
       refreshToken,
     });
   } catch (err) {
-    if (!err) {
-      err.code = 500;
-    }
-    return res.status(err.code).json({
+    return res.status(err.code || 500).json({
       status: false,
       message: err.message,
     });
@@ -155,9 +146,7 @@ const refreshToken = async (req, res) => {
       err.code = 401;
     }
 
-    err.code = err.code || 500;
-
-    return res.status(err.code).json({
+    return res.status(err.code || 500).json({
       status: false,
       message: err.message,
     });
